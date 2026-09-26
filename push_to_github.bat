@@ -16,8 +16,8 @@ echo Step 3: Committing changes...
 git commit -m "Remove admin and test folders - keep only users"
 echo.
 
-echo Step 4: Pushing to GitHub...
-git push -u origin main
+echo Step 4: Pushing to GitHub (force)...
+git push -u origin main --force
 echo.
 
 echo ========================================
