@@ -6,8 +6,16 @@ import { getDatabase } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-
 // Import messaging cho push notifications
 import { getMessaging } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-messaging.js";
 
-// Import firebase config từ file bảo mật
-import firebaseConfig from "../firebase.config.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyB5CnWbc_PHYdIe7XqQqxDOXF6DuKyG6OM",
+  authDomain: "aurabakhi-2b90d.firebaseapp.com",
+  databaseURL: "https://aurabakhi-2b90d-default-rtdb.firebaseio.com",
+  projectId: "aurabakhi-2b90d",
+  storageBucket: "aurabakhi-2b90d.firebasestorage.app",
+  messagingSenderId: "252158539927",
+  appId: "1:252158539927:web:024f93aa1790b3ecb711d2",
+  measurementId: "G-H6W81SNBSR"
+};
 
 // Khởi tạo Firebase App & Firestore (giữ nguyên của mày)
 const app = initializeApp(firebaseConfig);

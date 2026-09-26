@@ -17,7 +17,7 @@ git add .
 echo.
 
 echo Step 4: Creating initial commit...
-git commit -m "Initial commit - Aura Battle Users Website"
+git commit -m "Fix 404 error - embedded Firebase config in users/firebase.js"
 echo.
 
 echo Step 5: Setting main branch...
