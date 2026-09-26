@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Registrations collection - users can register, admin can manage
+    match /registrations/{registrationId} {
+      // Allow anyone to create a registration
+      allow create: if request.resource.data.size() > 0 
+        && request.resource.data.name is string 
+        && request.resource.data.className is string
+        && request.resource.data.ip is string
+        && request.resource.data.deviceId is string;
+      
+      // Allow read for all (for tournament info)
+      allow read: if true;
+      
+      // Allow update/delete only for admin (you can add auth check later)
+      allow update, delete: if true; // For now, allow all - add auth later
+    }
+    
+    // Matches collection - admin manages
+    match /matches/{matchId} {
+      allow read: if true;
+      allow create, update, delete: if true; // Admin only - add auth later
+    }
+    
+    // Tournament bracket - admin manages
+    match /tournament/{docId} {
+      allow read: if true;
+      allow write: if true; // Admin only - add auth later
+    }
+    
+    // Vote configuration - admin manages
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if true; // Admin only - add auth later
+    }
+    
+    // Vote records - prevent duplicate votes by IP
+    match /vote_records/{recordId} {
+      allow create: if request.resource.data.ip is string 
+        && request.resource.data.matchId is string
+        && request.resource.data.vote is string;
+      allow read: if true;
+      allow update, delete: if true; // Admin only - add auth later
+    }
+  }
+}
