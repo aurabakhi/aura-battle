@@ -1,0 +1,34 @@
+{
+  "rules": {
+    // Chat messages - everyone can read and write, users can delete their own messages
+    "chat_messages": {
+      ".read": true,
+      ".write": true,
+      // Validate message structure
+      "$messageId": {
+        ".validate": "newData.hasChildren(['username', 'text', 'timestamp'])",
+        // Allow delete if it's your own message or you're admin
+        ".delete": "auth != null && (data.child('username').val() === auth.uid || auth.token.admin === true)"
+      }
+    },
+    
+    // User profiles - users can read their own, admin can manage all
+    "users_profile": {
+      ".read": true,
+      "$username": {
+        // Allow read for all profiles
+        ".read": true,
+        // Allow write for own profile or admin
+        ".write": "auth != null && (auth.uid === $username || auth.token.admin === true)",
+        // Validate profile structure
+        ".validate": "newData.hasChildren(['username', 'displayName'])"
+      }
+    },
+    
+    // Admin profile - special handling
+    "users_profile/admin_aura": {
+      ".read": true,
+      ".write": "auth != null && auth.token.admin === true"
+    }
+  }
+}
