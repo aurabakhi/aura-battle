@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo PUSH CODE TO GITHUB
+echo PUSH CODE TO GITHUB (USERS ONLY)
 echo ========================================
 echo.
 
@@ -12,12 +12,12 @@ echo Step 2: Initializing Git...
 git init
 echo.
 
-echo Step 3: Adding files...
+echo Step 3: Adding files (users only - admin/test excluded)...
 git add .
 echo.
 
 echo Step 4: Creating initial commit...
-git commit -m "Initial commit - Aura Battle Tournament System"
+git commit -m "Initial commit - Aura Battle Users Website"
 echo.
 
 echo Step 5: Setting main branch...
@@ -36,6 +36,7 @@ echo ========================================
 echo DONE! Code đã được push lên GitHub
 echo ========================================
 echo.
+echo NOTE: Admin và Test folders đã bị loại bỏ
 echo Repository: https://github.com/aurabakhi/aura-battle/
 echo.
 pause
