@@ -4,6 +4,7 @@ package-lock.json
 
 # Firebase config (BẢO MẬT)
 firebase.js
+database.rules.json
 
 # Environment variables
 .env
