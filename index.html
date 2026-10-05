@@ -29,6 +29,15 @@
             throw new Error('Could not parse firebase.js');
         });
 
+        // Load Discord webhook URL
+        const webhookUrl = await fetch('webhook.js').then(r => r.text()).then(text => {
+            const match = text.match(/const DISCORD_WEBHOOK_URL = "(.*?)"/);
+            if (match) {
+                return match[1];
+            }
+            throw new Error('Could not parse webhook.js');
+        });
+
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
@@ -68,12 +77,23 @@
             const content = messageInput.value.trim();
             if (content) {
                 try {
-                    // Send to Firebase - Cloud Function will send to Discord
+                    // Send to Firebase
                     await push(messagesRef, {
                         content: content,
                         author: 'Bảo (Web)',
                         timestamp: Date.now(),
                         source: 'web'
+                    });
+
+                    // Send to Discord webhook (TEMPORARY - until Functions deploy)
+                    await fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            content: content
+                        })
                     });
 
                     messageInput.value = '';
