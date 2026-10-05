@@ -4,6 +4,7 @@
   "description": "Discord message viewer with Firebase",
   "main": "index.html",
   "scripts": {
-    "start": "echo 'Open index.html in your browser'"
+    "start": "echo 'Open index.html in your browser'",
+    "deploy": "firebase deploy --only functions"
   }
 }

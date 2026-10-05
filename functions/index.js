@@ -6,8 +6,8 @@ admin.initializeApp();
 const db = admin.database();
 
 // Discord Bot
-const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
-const DISCORD_CHANNEL_ID = process.env.DISCORD_CHANNEL_ID;
+const DISCORD_BOT_TOKEN = functions.config().discord.token;
+const DISCORD_CHANNEL_ID = functions.config().discord.channel_id;
 
 const client = new Client({
     intents: [
