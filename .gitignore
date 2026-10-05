@@ -1,10 +1,13 @@
 # Dependencies
 node_modules/
 package-lock.json
+functions/node_modules/
+functions/package-lock.json
 
 # Firebase config (BẢO MẬT)
 firebase.js
 database.rules.json
+.firebaserc
 
 # Discord webhook (BẢO MẬT)
 webhook.js
