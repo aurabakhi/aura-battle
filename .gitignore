@@ -6,6 +6,9 @@ package-lock.json
 firebase.js
 database.rules.json
 
+# Discord webhook (BẢO MẬT)
+webhook.js
+
 # Environment variables
 .env
 .env.local
