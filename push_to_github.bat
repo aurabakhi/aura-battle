@@ -13,7 +13,7 @@ git add .
 echo.
 
 echo Step 3: Committing changes...
-git commit -m "Update Aura Battle website"
+git commit -m "Update Discord bot"
 echo.
 
 echo Step 4: Pushing to GitHub...
@@ -23,7 +23,5 @@ echo.
 echo ========================================
 echo DONE!
 echo ========================================
-echo.
-echo Repository: https://github.com/aurabakhi/aura-battle/
 echo.
 pause
