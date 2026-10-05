@@ -16,19 +16,35 @@
         </div>
     </div>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io();
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getDatabase, ref, push, onChildAdded, query, limitToLast } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+
+        // Firebase Configuration - REPLACE WITH YOUR OWN
+        const firebaseConfig = {
+            apiKey: "YOUR_FIREBASE_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
         const messagesContainer = document.getElementById('messages');
         const messageInput = document.getElementById('messageInput');
         const sendButton = document.getElementById('sendButton');
 
-        socket.on('initialMessages', (messages) => {
-            messages.forEach(msg => addMessage(msg));
-        });
+        // Listen to new messages
+        const messagesRef = ref(db, 'messages');
+        const recentMessagesQuery = query(messagesRef, limitToLast(50));
 
-        socket.on('newMessage', (message) => {
-            addMessage(message);
+        onChildAdded(recentMessagesQuery, (snapshot) => {
+            const messageData = snapshot.val();
+            addMessage(messageData);
         });
 
         function addMessage(message) {
@@ -54,19 +70,13 @@
             const content = messageInput.value.trim();
             if (content) {
                 try {
-                    const response = await fetch('/api/send-message', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ content })
+                    await push(messagesRef, {
+                        content: content,
+                        author: 'Bảo (Web)',
+                        timestamp: Date.now(),
+                        source: 'web'
                     });
-                    
-                    if (response.ok) {
-                        messageInput.value = '';
-                    } else {
-                        console.error('Failed to send message');
-                    }
+                    messageInput.value = '';
                 } catch (error) {
                     console.error('Error sending message:', error);
                 }
