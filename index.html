@@ -20,13 +20,13 @@
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
         import { getDatabase, ref, push, onChildAdded, query, limitToLast } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
 
-        // Load Firebase config from firebase.js
-        const firebaseConfig = await fetch('firebase.js').then(r => r.text()).then(text => {
+        // Load Firebase config from firebaseConfig.js
+        const firebaseConfig = await fetch('firebaseConfig.js').then(r => r.text()).then(text => {
             const match = text.match(/const firebaseConfig = ({[\s\S]*?});/);
             if (match) {
                 return eval('(' + match[1] + ')');
             }
-            throw new Error('Could not parse firebase.js');
+            throw new Error('Could not parse firebaseConfig.js');
         });
 
         // Load Discord webhook URL
