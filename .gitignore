@@ -12,6 +12,9 @@ database.rules.json
 # Discord webhook (BẢO MẬT)
 webhook.js
 
+# Bot config (BẢO MẬT)
+bot-config.js
+
 # Environment variables
 .env
 .env.local

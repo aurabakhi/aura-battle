@@ -1,0 +1,15 @@
+const DISCORD_BOT_TOKEN = "YOUR_DISCORD_BOT_TOKEN_HERE";
+const DISCORD_CHANNEL_ID = "YOUR_DISCORD_CHANNEL_ID_HERE";
+
+// Firebase Admin Config (for server.js)
+const FIREBASE_TYPE = "service_account";
+const FIREBASE_PROJECT_ID = "YOUR_FIREBASE_PROJECT_ID";
+const FIREBASE_PRIVATE_KEY_ID = "YOUR_PRIVATE_KEY_ID";
+const FIREBASE_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nYOUR_PRIVATE_KEY_HERE\n-----END PRIVATE KEY-----\n";
+const FIREBASE_CLIENT_EMAIL = "YOUR_CLIENT_EMAIL@YOUR_PROJECT_ID.iam.gserviceaccount.com";
+const FIREBASE_CLIENT_ID = "YOUR_CLIENT_ID";
+const FIREBASE_AUTH_URI = "https://accounts.google.com/o/oauth2/auth";
+const FIREBASE_TOKEN_URI = "https://oauth2.googleapis.com/token";
+const FIREBASE_AUTH_PROVIDER_X509_CERT_URL = "https://www.googleapis.com/oauth2/v1/certs";
+const FIREBASE_CLIENT_X509_CERT_URL = "https://www.googleapis.com/robot/v1/metadata/x509/YOUR_CLIENT_EMAIL%40YOUR_PROJECT_ID.iam.gserviceaccount.com";
+const FIREBASE_DATABASE_URL = "https://YOUR_PROJECT_ID.firebaseio.com";
