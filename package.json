@@ -1,10 +1,9 @@
 {
   "name": "bao-discord-bot",
   "version": "1.0.0",
-  "description": "Discord message viewer with Firebase",
+  "description": "Discord message viewer with Firebase + Webhook",
   "main": "index.html",
   "scripts": {
-    "start": "echo 'Open index.html in your browser'",
-    "deploy": "firebase deploy --only functions"
+    "start": "echo 'Open index.html in your browser'"
   }
 }
